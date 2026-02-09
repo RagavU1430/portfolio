@@ -26,6 +26,11 @@
     scroll-behavior: smooth;
 }
 
+html {
+    scroll-padding-top: 100px;
+    /* Prevent navbar overlap */
+}
+
 body {
     font-family: var(--font-body);
     background-color: var(--bg-color);
@@ -85,7 +90,10 @@ ul {
 }
 
 .section {
-    padding: 6rem 0;
+    padding: 8rem 0;
+    /* More breathing room */
+    min-height: 80vh;
+    /* Ensure sections have substantial height */
     position: relative;
     /* Ensure sections stack above matrix */
     z-index: 1;
@@ -235,7 +243,8 @@ ul {
 .hero-content {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    gap: 4rem;
+    gap: 6rem;
+    /* Increase gap between text and image */
     align-items: center;
     z-index: 2;
 }
@@ -485,7 +494,10 @@ ul {
 .skills-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Slightly wider cards */
+    gap: 3rem;
+    /* More space between skills */
 }
 
 .skill-category {
@@ -535,7 +547,8 @@ ul {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
+    gap: 4rem;
+    /* More space between projects */
 }
 
 .project-card {
@@ -606,7 +619,8 @@ ul {
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    gap: 2.5rem;
+    /* More space between certs */
 }
 
 .cert-card {
