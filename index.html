@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ragav U | Portfolio</title>
+    <meta name="description"
+        content="Professional portfolio of Ragav U - Engineering Student, Developer, and Creative Professional.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <canvas id="matrix-bg"></canvas>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">RAGAV<span class="dot">.</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact" class="btn-primary">Contact Me</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <header id="hero" class="hero-section">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="greeting">Hello, I'm</span>
+                <h1 class="name">Ragav U</h1>
+                <h2 class="title">Engineering Student & <br> Creative Developer</h2>
+                <p class="summary">
+                    I bridge the gap between technical engineering and creative storytelling. A student at VSB
+                    Engineering College proficient in Java and Python, with a unique passion for cinematography and
+                    editing.
+                </p>
+                <div class="hero-btns">
+                    <a href="#experience" class="btn-primary">View My Work</a>
+                    <a href="#contact" class="btn-secondary">Get in Touch</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/ragav-u-639b1a335" target="_blank" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/RagavU1430" target="_blank" aria-label="GitHub"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/itz__me__ragav12?igsh=MnU5czE4bXFpeTA3" target="_blank"
+                        aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="hero-image-placeholder" style="background: none; border: none; overflow: hidden;">
+                    <img src="Ragav_Pic.png" alt="Ragav U"
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 30px;">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <a href="#about">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+                <span class="arrow"></span>
+            </a>
+        </div>
+    </header>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">My Story</span>
+                <h2 class="section-title">About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I am currently pursuing my engineering degree at <strong>VSB Engineering College</strong>. My
+                        journey is defined by a dual passion: the logic of coding and the art of visual storytelling.
+                    </p>
+                    <p>
+                        With a strong foundation in <strong>Java</strong> and <strong>Python</strong>, I love building
+                        functional, efficient software. Simultaneously, my background in <strong>cinematography</strong>
+                        and <strong>editing</strong> allows me to bring a creative perspective to every project I touch,
+                        ensuring that technical solutions are not just functional, but also engaging.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Career Path</span>
+                <h2 class="section-title">Experience</h2>
+            </div>
+            <div class="timeline">
+                <!-- Internship -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Recent</div>
+                    <div class="timeline-content">
+                        <h3>Intern</h3>
+                        <p class="highlight">Enginow</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Gained hands-on experience in real-world technical
+                                projects.</li>
+                            <li><i class="fas fa-check-circle"></i> Collaborated with senior developers to optimize code
+                                performance.</li>
+                            <li><i class="fas fa-check-circle"></i> Applied engineering concepts to solve practical
+                                challenges.</li>
+                            <!-- Add specific project details here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Academic Background</span>
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="timeline">
+                <!-- College -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Present</div>
+                    <div class="timeline-content">
+                        <h3>Bachelor of Engineering</h3>
+                        <p class="highlight">VSB Engineering College</p>
+                        <p>Focusing on core computer science fundamentals, software engineering, and system design.</p>
+                    </div>
+                </div>
+                <!-- School -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Completed</div>
+                    <div class="timeline-content">
+                        <h3>Higher Secondary Education (12th Grade)</h3>
+                        <p class="highlight">KVBOA MHSS</p>
+                        <ul>
+                            <li><i class="fas fa-graduation-cap"></i> Scored <strong>77%</strong></li>
+                            <li><i class="fas fa-map-marker-alt"></i> Karur District, Tamil Nadu</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">My Expertise</span>
+                <h2 class="section-title">Skills & Interests</h2>
+            </div>
+            <div class="skills-container">
+                <!-- Technical Skills -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Technical</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Data Structures</span>
+                        <span class="tag">Web Development</span>
+                    </div>
+                </div>
+                <!-- Creative Skills -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-video"></i> Creative</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Video Editing</span>
+                        <span class="tag">Cinematography</span>
+                        <span class="tag">Storytelling</span>
+                        <span class="tag">Content Creation</span>
+                    </div>
+                </div>
+                <!-- Tools -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools</h3>
+                    <div class="skill-tags">
+                        <span class="tag">VS Code</span>
+                        <span class="tag">Premiere Pro</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">Davinci Resolve</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Selected Work</span>
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- Tech Project -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="aires.png" alt="AI Resume Screening System"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <!-- AI Resume Screening Project Image -->
+                    </div>
+                    <div class="project-info">
+                        <h3>AI Resume Screening System</h3>
+                        <p class="project-desc">An intelligent system that automates candidate ranking by analyzing
+                            resumes against job descriptions using Natural Language Processing.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>NLP</span>
+                            <span>AI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/RagavU1430/AI-Powered-Resume-Screening-Candidate-Ranking-System"
+                                target="_blank"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Creative Project -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <div class="placeholder-img color-2"></div>
+                        <!-- Insert image of creative project -->
+                    </div>
+                    <div class="project-info">
+                        <h3>Cinematography Showcase</h3>
+                        <p class="project-desc">A short film or visual sequence highlighting composition, lighting, and
+                            editing skills.</p>
+                        <div class="project-tech">
+                            <span>Editing</span>
+                            <span>Cinematography</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://www.instagram.com/reel/DUdPUfeEtkU/?igsh=MTlqbTl2aG5lM3FoaA=="
+                                target="_blank"><i class="fas fa-play"></i> Watch Video</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="section bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Credentials</span>
+                <h2 class="section-title">Certifications</h2>
+            </div>
+            <div class="cert-grid">
+                <!-- Cert 1: Introduction to IoT -->
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-network-wired"></i></div>
+                    <div class="cert-content">
+                        <h3>Introduction to IoT</h3>
+                        <p class="cert-org">Cisco Networking Academy</p>
+                        <p class="cert-relevance">Fundamentals of IoT architecture and security.</p>
+                        <a href="Introduction_to_IoT_certificate_ragavkrr14-gmail-com_3f430948-0e9a-4657-bbd4-8bd1f45ea280_page-0001.jpg"
+                            target="_blank" class="btn-secondary"
+                            style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.8rem;">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Cert 2: Java Basic -->
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fab fa-java"></i></div>
+                    <div class="cert-content">
+                        <h3>Java (Basic)</h3>
+                        <p class="cert-org">HackerRank</p>
+                        <p class="cert-relevance">Validated proficiency in Java programming fundamentals.</p>
+                        <a href="Java Hackerrank.png" target="_blank" class="btn-secondary"
+                            style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.8rem;">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Cert 3: Python Basic -->
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fab fa-python"></i></div>
+                    <div class="cert-content">
+                        <h3>Python (Basic)</h3>
+                        <p class="cert-org">HackerRank</p>
+                        <p class="cert-relevance">Demonstrated core Python programming skills.</p>
+                        <a href="python(basic) hackkerrank.png" target="_blank" class="btn-secondary"
+                            style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.8rem;">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Cert 4: Salesforce -->
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-cloud"></i></div>
+                    <div class="cert-content">
+                        <h3>Administrator Explorer</h3>
+                        <p class="cert-org">Salesforce</p>
+                        <p class="cert-relevance">Foundational knowledge of Salesforce administration.</p>
+                        <a href="Salesforce Administrator Explorer.pdf" target="_blank" class="btn-secondary"
+                            style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.8rem;">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Cert 5: TCS Ion Yuva AI -->
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-brain"></i></div>
+                    <div class="cert-content">
+                        <h3>Yuva AI</h3>
+                        <p class="cert-org">TCS Ion</p>
+                        <p class="cert-relevance">Artificial Intelligence concepts and applications.</p>
+                        <a href="Tcs Ion Yuva AI Certificatea.pdf" target="_blank" class="btn-secondary"
+                            style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.8rem;">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Cert 6: IBM Design -->
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-pencil-ruler"></i></div>
+                    <div class="cert-content">
+                        <h3>IBM Design</h3>
+                        <p class="cert-org">IBM</p>
+                        <p class="cert-relevance">Design thinking and user-centric problem solving.</p>
+                        <a href="IBMDesign20260103-32-tfz308_page-0001.jpg" target="_blank" class="btn-secondary"
+                            style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.8rem;">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Additional Cert: IoT Update -->
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-sync-alt"></i></div>
+                    <div class="cert-content">
+                        <h3>IoT Update</h3>
+                        <p class="cert-org">Cisco Networking Academy</p>
+                        <p class="cert-relevance">Advanced concepts in Internet of Things.</p>
+                        <a href="IntrotoIoTUpdate20251125-30-3lkm3t_page-0001.jpg" target="_blank" class="btn-secondary"
+                            style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.8rem;">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Additional Cert: CR1061 -->
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-award"></i></div>
+                    <div class="cert-content">
+                        <h3>Course CR1061</h3>
+                        <p class="cert-org">Professional Certification</p>
+                        <p class="cert-relevance">Specialized technical training completion.</p>
+                        <a href="Ragav_CR1061_certificate_page-0001.jpg" target="_blank" class="btn-secondary"
+                            style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.8rem;">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Additional Cert: Completion 1 -->
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-check-double"></i></div>
+                    <div class="cert-content">
+                        <h3>Course Completion</h3>
+                        <p class="cert-org">Online Platform</p>
+                        <p class="cert-relevance">Verified completion of technical coursework.</p>
+                        <a href="N8Muuhk6XsXgMTeu2_ifobHAoMjQs9s6bKS_EueeWBNid6CNHgRbr_1768632743680_completion_certificate_page-0001.jpg"
+                            target="_blank" class="btn-secondary"
+                            style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.8rem;">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Additional Cert: Completion 2 -->
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-check-double"></i></div>
+                    <div class="cert-content">
+                        <h3>Course Completion</h3>
+                        <p class="cert-org">Online Platform</p>
+                        <p class="cert-relevance">Verified completion of technical coursework.</p>
+                        <a href="gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_EueeWBNid6CNHgRbr_1768580584795_completion_certificate_page-0001.jpg"
+                            target="_blank" class="btn-secondary"
+                            style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.8rem;">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Additional Cert: Completion 3 -->
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-check-double"></i></div>
+                    <div class="cert-content">
+                        <h3>Course Completion</h3>
+                        <p class="cert-org">Online Platform</p>
+                        <p class="cert-relevance">Verified completion of technical coursework.</p>
+                        <a href="gmf3ypEXBj2wvfQWC_ifobHAoMjQs9s6bKS_EueeWBNid6CNHgRbr_1768725948707_completion_certificate.pdf"
+                            target="_blank" class="btn-secondary"
+                            style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.8rem;">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Additional Cert: Completion 4 -->
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-check-double"></i></div>
+                    <div class="cert-content">
+                        <h3>Course Completion</h3>
+                        <p class="cert-org">Online Platform</p>
+                        <p class="cert-relevance">Verified completion of technical coursework.</p>
+                        <a href="io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_EueeWBNid6CNHgRbr_1769506934133_completion_certificate_page-0001.jpg"
+                            target="_blank" class="btn-secondary"
+                            style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.8rem;">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Additional Cert: Completion 5 -->
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-check-double"></i></div>
+                    <div class="cert-content">
+                        <h3>Course Completion</h3>
+                        <p class="cert-org">Online Platform</p>
+                        <p class="cert-relevance">Verified completion of technical coursework.</p>
+                        <a href="ebac0b7c-d950-4b09-8cea-afca76d45779.jpg" target="_blank" class="btn-secondary"
+                            style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.8rem;">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section footer-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Let's Connect</h2>
+                    <p>Whether you need a developer for a technical project or a creative eye for visual content, I'm
+                        ready to collaborate.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>ragavkrr14@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 9360376757</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Karur, Tamil Nadu, India</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="whatsappForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Your Email (Optional)">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+                </form>
+
+                <script>
+                    document.getElementById('whatsappForm').addEventListener('submit', function (e) {
+                        e.preventDefault();
+
+                        var name = document.getElementById('name').value;
+                        var email = document.getElementById('email').value;
+                        var message = document.getElementById('message').value;
+
+                        var whatsappMessage = "Name: " + name + "%0a";
+                        if (email) whatsappMessage += "Email: " + email + "%0a";
+                        whatsappMessage += "Message: " + message;
+
+                        var phoneNumber = "919360376757"; // Your phone number with country code
+
+                        var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + whatsappMessage;
+
+                        window.open(whatsappUrl, '_blank');
+                    });
+                </script>
+            </div>
+        </div>
+        <footer class="main-footer">
+            <p>&copy; 2026 Ragav U. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/ragav-u-639b1a335" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/RagavU1430" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/itz__me__ragav12?igsh=MnU5czE4bXFpeTA3" target="_blank"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
