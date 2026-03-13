@@ -42,9 +42,10 @@ body {
 
 /* Custom Cursor */
 .cursor-dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     background-color: var(--accent-primary);
+    box-shadow: 0 0 10px var(--accent-primary);
     border-radius: 50%;
     position: fixed;
     top: 0;
@@ -52,20 +53,11 @@ body {
     transform: translate(-50%, -50%);
     z-index: 9999;
     pointer-events: none;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s, box-shadow 0.2s;
 }
 
 .cursor-outline {
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--accent-primary);
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    z-index: 9998;
-    pointer-events: none;
-    transition: width 0.3s, height 0.3s, background-color 0.3s;
+    display: none;
 }
 
 /* Matrix Background Canvas */

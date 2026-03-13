@@ -1,39 +1,122 @@
-// Custom Cursor
+// Realistic Shooting Star Cursor
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorOutline = document.querySelector('.cursor-outline');
-
-if (cursorDot && cursorOutline) {
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        // Dot follows cursor exactly
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-
-        // Outline follows with a slight delay for a smooth effect
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
-    });
+// Hide old outline since we use canvas trail now
+if (cursorOutline) {
+    cursorOutline.style.display = 'none';
 }
 
-// Add hover effect to interactive elements
-const interactiveElements = document.querySelectorAll('a, button, .skill-category, .project-card');
+// Create canvas for the trail
+const trailCanvas = document.createElement('canvas');
+trailCanvas.id = 'cursor-trail';
+document.body.appendChild(trailCanvas);
+const ctx = trailCanvas.getContext('2d');
 
-if (cursorOutline) {
+trailCanvas.style.position = 'fixed';
+trailCanvas.style.top = '0';
+trailCanvas.style.left = '0';
+trailCanvas.style.width = '100vw';
+trailCanvas.style.height = '100vh';
+trailCanvas.style.pointerEvents = 'none';
+trailCanvas.style.zIndex = '9998'; // Just below cursor-dot
+
+let width = trailCanvas.width = window.innerWidth;
+let height = trailCanvas.height = window.innerHeight;
+
+window.addEventListener('resize', () => {
+    width = trailCanvas.width = window.innerWidth;
+    height = trailCanvas.height = window.innerHeight;
+});
+
+const particles = [];
+let mouse = { x: width/2, y: height/2, active: false };
+let lastMouse = { x: width/2, y: height/2 };
+
+window.addEventListener('mousemove', (e) => {
+    lastMouse.x = mouse.x;
+    lastMouse.y = mouse.y;
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    mouse.active = true;
+
+    if (cursorDot) {
+        cursorDot.style.left = `${mouse.x}px`;
+        cursorDot.style.top = `${mouse.y}px`;
+    }
+
+    const dx = mouse.x - lastMouse.x;
+    const dy = mouse.y - lastMouse.y;
+    const distance = Math.sqrt(dx*dx + dy*dy);
+    
+    // Create particles based on speed
+    if (distance > 0 && distance < 200) { // Limit huge jumps
+        const numParticles = Math.min(Math.floor(distance / 2), 15);
+        for (let i = 0; i < numParticles; i++) {
+            const spread = Math.random() * 4 - 2;
+            particles.push({
+                x: lastMouse.x + dx * (i / numParticles) + spread,
+                y: lastMouse.y + dy * (i / numParticles) + spread,
+                vx: -dx * 0.05 + (Math.random() - 0.5) * 1, // opposite of motion
+                vy: -dy * 0.05 + (Math.random() - 0.5) * 1 + 0.3, // slight gravity
+                life: 1, // 0 to 1
+                size: Math.random() * 2.5 + 1.5,
+                decay: Math.random() * 0.03 + 0.015, // fade speed
+                hue: 180 + Math.random() * 40 // cyan to blue colors
+            });
+        }
+    }
+});
+
+function drawTrail() {
+    ctx.clearRect(0, 0, width, height);
+    
+    // Glowing blending
+    ctx.globalCompositeOperation = 'lighter';
+    
+    for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+        
+        // Dynamic glow and color
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = `hsla(${p.hue}, 100%, 60%, ${p.life})`;
+        ctx.fillStyle = `hsla(${p.hue}, 100%, 80%, ${p.life})`;
+        ctx.fill();
+        
+        // Physics
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= p.decay;
+        
+        // Remove dead
+        if (p.life <= 0) {
+            particles.splice(i, 1);
+            i--;
+        }
+    }
+    
+    ctx.globalCompositeOperation = 'source-over';
+    requestAnimationFrame(drawTrail);
+}
+
+drawTrail();
+
+// Interactive Elements Hover
+const interactiveElements = document.querySelectorAll('a, button, .skill-category, .project-card, input, textarea');
+
+if (cursorDot) {
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
-            cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            cursorOutline.style.backgroundColor = 'rgba(56, 189, 248, 0.1)';
-            cursorOutline.style.borderColor = 'transparent';
+            cursorDot.style.transform = 'translate(-50%, -50%) scale(2.5)';
+            cursorDot.style.backgroundColor = '#fff';
+            cursorDot.style.boxShadow = '0 0 15px #fff, 0 0 30px var(--accent-primary)';
         });
-
         el.addEventListener('mouseleave', () => {
-            cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-            cursorOutline.style.backgroundColor = 'transparent';
-            cursorOutline.style.borderColor = 'var(--accent-primary)';
+            cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursorDot.style.backgroundColor = 'var(--accent-primary)';
+            cursorDot.style.boxShadow = '0 0 10px var(--accent-primary)';
         });
     });
 }
