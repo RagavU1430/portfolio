@@ -258,3 +258,77 @@ if (canvas) {
         // Optionally reset drops or just let them fall
     });
 }
+
+// 3D Profile Card Interactive Rotation
+const tiltCard = document.getElementById('tilt-card');
+if (tiltCard) {
+    let isDraggingImage = false;
+    let imgStartX = 0, imgStartY = 0;
+    let currentRotX = 0, currentRotY = 0;
+
+    // Hover effect for subtle 3D tilt
+    tiltCard.addEventListener('mousemove', (e) => {
+        if (isDraggingImage) return;
+        
+        const rect = tiltCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Tilt up to 25 degrees
+        const rotateY = ((x - centerX) / centerX) * 25;
+        const rotateX = -((y - centerY) / centerY) * 25;
+        
+        tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    tiltCard.addEventListener('mouseleave', () => {
+        if (!isDraggingImage) {
+            tiltCard.style.transform = `rotateX(0deg) rotateY(0deg)`;
+            tiltCard.style.transition = 'transform 0.5s ease';
+        }
+    });
+
+    tiltCard.addEventListener('mouseenter', () => {
+        if (!isDraggingImage) {
+            tiltCard.style.transition = 'transform 0.1s ease';
+        }
+    });
+
+    // Drag effect for free 3D rotation
+    tiltCard.addEventListener('mousedown', (e) => {
+        isDraggingImage = true;
+        imgStartX = e.clientX;
+        imgStartY = e.clientY;
+        tiltCard.style.transition = 'none';
+        tiltCard.style.cursor = 'grabbing';
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (!isDraggingImage) return;
+        
+        const deltaX = e.clientX - imgStartX;
+        const deltaY = e.clientY - imgStartY;
+        
+        currentRotY += deltaX * 0.6; // slightly more sensitive
+        currentRotX -= deltaY * 0.6;
+        
+        imgStartX = e.clientX;
+        imgStartY = e.clientY;
+        
+        tiltCard.style.transform = `rotateX(${currentRotX}deg) rotateY(${currentRotY}deg)`;
+    });
+
+    window.addEventListener('mouseup', () => {
+        if (isDraggingImage) {
+            isDraggingImage = false;
+            tiltCard.style.cursor = 'grab';
+            tiltCard.style.transition = 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            tiltCard.style.transform = `rotateX(0deg) rotateY(0deg)`;
+            currentRotX = 0;
+            currentRotY = 0;
+        }
+    });
+}
