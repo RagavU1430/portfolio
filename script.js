@@ -39,10 +39,6 @@ window.addEventListener('mousemove', (e) => {
     mouse.y = e.clientY;
     mouse.active = true;
 
-    if (cursorDot) {
-        cursorDot.style.left = `${mouse.x}px`;
-        cursorDot.style.top = `${mouse.y}px`;
-    }
 
     const dx = mouse.x - lastMouse.x;
     const dy = mouse.y - lastMouse.y;
@@ -71,6 +67,12 @@ window.addEventListener('mousemove', (e) => {
 function drawTrail() {
     ctx.clearRect(0, 0, width, height);
     
+    // Sync dot position smoothly with animation frames to avoid DOM thrashing
+    if (cursorDot && mouse.active) {
+        cursorDot.style.left = `${mouse.x}px`;
+        cursorDot.style.top = `${mouse.y}px`;
+    }
+
     // Safety cap to prevent lag if particles array gets too large
     if (particles.length > 200) {
         particles.splice(0, particles.length - 200);
@@ -82,12 +84,15 @@ function drawTrail() {
     for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         
+        // Fast pseudo-glow (Avoids expensive shadowBlur)
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * p.life * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${p.hue}, 100%, 60%, ${p.life * 0.3})`;
+        ctx.fill();
+
+        // Core particle
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
-        
-        // Dynamic glow and color
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = `hsla(${p.hue}, 100%, 60%, ${p.life})`;
         ctx.fillStyle = `hsla(${p.hue}, 100%, 80%, ${p.life})`;
         ctx.fill();
         
