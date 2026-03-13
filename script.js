@@ -49,18 +49,19 @@ window.addEventListener('mousemove', (e) => {
     const distance = Math.sqrt(dx*dx + dy*dy);
     
     // Create particles based on speed
-    if (distance > 0 && distance < 200) { // Limit huge jumps
-        const numParticles = Math.min(Math.floor(distance / 2), 15);
+    if (distance > 0) { 
+        // Remove speed limit, and interpolate better so it's smooth during fast movement
+        const numParticles = Math.min(Math.max(Math.floor(distance / 3), 1), 60);
         for (let i = 0; i < numParticles; i++) {
             const spread = Math.random() * 4 - 2;
             particles.push({
                 x: lastMouse.x + dx * (i / numParticles) + spread,
                 y: lastMouse.y + dy * (i / numParticles) + spread,
-                vx: -dx * 0.05 + (Math.random() - 0.5) * 1, // opposite of motion
-                vy: -dy * 0.05 + (Math.random() - 0.5) * 1 + 0.3, // slight gravity
+                vx: -dx * 0.02 + (Math.random() - 0.5) * 0.5, // smoother spread tail
+                vy: -dy * 0.02 + (Math.random() - 0.5) * 0.5, // remove gravity for a pure tail
                 life: 1, // 0 to 1
                 size: Math.random() * 2.5 + 1.5,
-                decay: Math.random() * 0.03 + 0.015, // fade speed
+                decay: Math.random() * 0.03 + 0.02, // slightly faster fade to handle more particles
                 hue: 180 + Math.random() * 40 // cyan to blue colors
             });
         }
@@ -69,6 +70,11 @@ window.addEventListener('mousemove', (e) => {
 
 function drawTrail() {
     ctx.clearRect(0, 0, width, height);
+    
+    // Safety cap to prevent lag if particles array gets too large
+    if (particles.length > 200) {
+        particles.splice(0, particles.length - 200);
+    }
     
     // Glowing blending
     ctx.globalCompositeOperation = 'lighter';
