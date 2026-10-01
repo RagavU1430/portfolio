@@ -115,19 +115,19 @@ function drawTrail() {
 drawTrail();
 
 // Interactive Elements Hover
-const interactiveElements = document.querySelectorAll('a, button, .skill-category, .project-card, input, textarea');
+const interactiveElements = document.querySelectorAll('a, button, .skill-category, .project-card, .cert-card, input, textarea');
 
 if (cursorDot) {
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
-            cursorDot.style.transform = 'translate(-50%, -50%) scale(2.5)';
-            cursorDot.style.backgroundColor = '#fff';
-            cursorDot.style.boxShadow = '0 0 15px #fff, 0 0 30px var(--accent-primary)';
+            cursorDot.style.transform = 'translate(-50%, -50%) scale(2.2)';
+            cursorDot.style.backgroundColor = 'var(--accent-primary)';
+            cursorDot.style.boxShadow = '0 0 12px rgba(2, 132, 199, 0.5)';
         });
         el.addEventListener('mouseleave', () => {
             cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
             cursorDot.style.backgroundColor = 'var(--accent-primary)';
-            cursorDot.style.boxShadow = '0 0 10px var(--accent-primary)';
+            cursorDot.style.boxShadow = '0 0 10px rgba(2, 132, 199, 0.35)';
         });
     });
 }
@@ -226,10 +226,10 @@ if (canvas) {
         nodes.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.4,
-            vy: (Math.random() - 0.5) * 0.4,
+            vx: (Math.random() - 0.5) * 0.35,
+            vy: (Math.random() - 0.5) * 0.35,
             radius: Math.random() * 1.8 + 1,
-            color: Math.random() > 0.4 ? 'rgba(56, 189, 248, ' : 'rgba(99, 102, 241, '
+            color: Math.random() > 0.4 ? 'rgba(2, 132, 199, ' : 'rgba(79, 70, 229, '
         });
     }
 
@@ -255,11 +255,11 @@ if (canvas) {
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
                 if (dist < 125) {
-                    const alpha = (1 - dist / 125) * 0.22;
+                    const alpha = (1 - dist / 125) * 0.18;
                     ctx.beginPath();
                     ctx.moveTo(n.x, n.y);
                     ctx.lineTo(n2.x, n2.y);
-                    ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
+                    ctx.strokeStyle = `rgba(2, 132, 199, ${alpha})`;
                     ctx.lineWidth = 0.8;
                     ctx.stroke();
                 }
@@ -268,7 +268,7 @@ if (canvas) {
             // Draw Node Particle
             ctx.beginPath();
             ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
-            ctx.fillStyle = n.color + '0.75)';
+            ctx.fillStyle = n.color + '0.65)';
             ctx.fill();
         }
 
