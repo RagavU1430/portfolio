@@ -339,56 +339,160 @@ if (tiltCard) {
 }
 
 // ========================================================
-// CERTIFICATIONS SHOWCASE: FILTERING, SEARCH & LIGHTBOX
+// CERTIFICATIONS SHOWCASE: FILTERING, SEARCH, PAGINATION & LIGHTBOX
 // ========================================================
+const ITEMS_PER_PAGE = 6;
+let currentPage = 1;
 let currentActiveFilter = 'all';
 let currentSearchQuery = '';
-let currentVisibleCertIds = [];
+let currentFilteredCards = [];
 let currentModalIndex = 0;
 
-// Initialize visible cert IDs on load
-function updateVisibleCertList() {
-    const cards = document.querySelectorAll('#certGrid .cert-card');
-    currentVisibleCertIds = [];
-    cards.forEach(card => {
-        if (!card.classList.contains('hidden')) {
-            const id = card.getAttribute('data-id');
-            if (id) currentVisibleCertIds.push(id);
-        }
+// View Switcher (Grid / List)
+const viewGridBtn = document.getElementById('viewGridBtn');
+const viewListBtn = document.getElementById('viewListBtn');
+const certGrid = document.getElementById('certGrid');
+
+if (viewGridBtn && viewListBtn && certGrid) {
+    viewGridBtn.addEventListener('click', () => {
+        certGrid.classList.remove('list-view');
+        viewGridBtn.classList.add('active');
+        viewListBtn.classList.remove('active');
+    });
+
+    viewListBtn.addEventListener('click', () => {
+        certGrid.classList.add('list-view');
+        viewListBtn.classList.add('active');
+        viewGridBtn.classList.remove('active');
     });
 }
 
-// Apply Filter & Search combined
-function filterCertificates() {
-    const cards = document.querySelectorAll('#certGrid .cert-card');
-    const emptyState = document.getElementById('certEmptyState');
-    const resultsCountEl = document.getElementById('certResultsCount');
-    let visibleCount = 0;
+// Smooth scroll to top of cert section on page change
+function scrollToCertSection() {
+    const certSection = document.getElementById('certifications');
+    if (certSection) {
+        const navHeight = 70;
+        const targetPos = certSection.getBoundingClientRect().top + window.pageYOffset - navHeight;
+        window.scrollTo({
+            top: targetPos,
+            behavior: 'smooth'
+        });
+    }
+}
 
-    cards.forEach(card => {
+// Filter, Search, and Paginate
+function filterCertificates(resetToPageOne = true) {
+    if (resetToPageOne) {
+        currentPage = 1;
+    }
+
+    const cards = Array.from(document.querySelectorAll('#certGrid .cert-card'));
+    const emptyState = document.getElementById('certEmptyState');
+    const paginationContainer = document.getElementById('certPaginationContainer');
+
+    // 1. Filter matching cards
+    currentFilteredCards = cards.filter(card => {
         const category = card.getAttribute('data-category');
         const searchKeywords = (card.getAttribute('data-search') || '').toLowerCase();
-
         const matchesCategory = (currentActiveFilter === 'all' || category === currentActiveFilter);
         const matchesSearch = !currentSearchQuery || searchKeywords.includes(currentSearchQuery);
-
-        if (matchesCategory && matchesSearch) {
-            card.classList.remove('hidden');
-            visibleCount++;
-        } else {
-            card.classList.add('hidden');
-        }
+        return matchesCategory && matchesSearch;
     });
 
-    if (resultsCountEl) {
-        resultsCountEl.textContent = `Showing ${visibleCount} credential${visibleCount === 1 ? '' : 's'}`;
+    const totalItems = currentFilteredCards.length;
+    const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE) || 1;
+
+    if (currentPage > totalPages) {
+        currentPage = totalPages;
     }
 
-    if (emptyState) {
-        emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+    // 2. Hide all cards
+    cards.forEach(card => card.classList.add('hidden'));
+
+    // 3. Show current page slice
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalItems);
+
+    for (let i = startIndex; i < endIndex; i++) {
+        const card = currentFilteredCards[i];
+        if (card) {
+            card.classList.remove('hidden');
+        }
     }
 
-    updateVisibleCertList();
+    // 4. Update Empty State & Pagination Bar
+    if (totalItems === 0) {
+        if (emptyState) emptyState.style.display = 'block';
+        if (paginationContainer) paginationContainer.style.display = 'none';
+    } else {
+        if (emptyState) emptyState.style.display = 'none';
+        if (paginationContainer) paginationContainer.style.display = 'flex';
+        renderPagination(totalItems, totalPages, startIndex, endIndex);
+    }
+}
+
+function renderPagination(totalItems, totalPages, startIndex, endIndex) {
+    const pageInfo = document.getElementById('certPageInfo');
+    const pagination = document.getElementById('certPagination');
+
+    if (pageInfo) {
+        pageInfo.textContent = `Showing ${startIndex + 1}–${endIndex} of ${totalItems} credential${totalItems === 1 ? '' : 's'}`;
+    }
+
+    if (!pagination) return;
+    pagination.innerHTML = '';
+
+    if (totalPages <= 1) {
+        return; // No pagination buttons needed for single page
+    }
+
+    // Prev Button
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'page-btn page-btn-prev';
+    prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+    prevBtn.title = 'Previous Page';
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            filterCertificates(false);
+            scrollToCertSection();
+        }
+    });
+    pagination.appendChild(prevBtn);
+
+    // Page Numbers
+    for (let p = 1; p <= totalPages; p++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.className = `page-btn ${p === currentPage ? 'active' : ''}`;
+        pageBtn.textContent = p;
+        pageBtn.title = `Page ${p}`;
+        pageBtn.addEventListener('click', () => {
+            if (currentPage !== p) {
+                currentPage = p;
+                filterCertificates(false);
+                scrollToCertSection();
+            }
+        });
+        pagination.appendChild(pageBtn);
+    }
+
+    // Next Button
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'page-btn page-btn-next';
+    nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+    nextBtn.title = 'Next Page';
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            filterCertificates(false);
+            scrollToCertSection();
+        }
+    });
+    pagination.appendChild(nextBtn);
+
+    attachCursorEvents();
 }
 
 // Category Tabs Click Handlers
@@ -398,7 +502,7 @@ filterButtons.forEach(btn => {
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentActiveFilter = btn.getAttribute('data-filter') || 'all';
-        filterCertificates();
+        filterCertificates(true);
     });
 });
 
@@ -412,7 +516,7 @@ if (searchInput) {
         if (searchClear) {
             searchClear.style.display = currentSearchQuery ? 'block' : 'none';
         }
-        filterCertificates();
+        filterCertificates(true);
     });
 }
 
@@ -423,7 +527,7 @@ if (searchClear) {
             currentSearchQuery = '';
             searchClear.style.display = 'none';
             searchInput.focus();
-            filterCertificates();
+            filterCertificates(true);
         }
     });
 }
@@ -440,15 +544,15 @@ function resetCertFilters() {
             b.classList.remove('active');
         }
     });
-    filterCertificates();
+    filterCertificates(true);
 }
 
 // Lightbox Modal Functions
 function openCertModal(certId) {
     if (typeof CERTIFICATES_DATA === 'undefined') return;
     
-    updateVisibleCertList();
-    const index = currentVisibleCertIds.indexOf(certId);
+    const allFilteredIds = currentFilteredCards.map(c => c.getAttribute('data-id')).filter(Boolean);
+    const index = allFilteredIds.indexOf(certId);
     if (index !== -1) {
         currentModalIndex = index;
     } else {
@@ -460,7 +564,7 @@ function openCertModal(certId) {
     if (modal) {
         modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        document.body.style.overflow = 'hidden';
     }
 }
 
@@ -516,15 +620,17 @@ function closeCertModal() {
 }
 
 function nextCertModal() {
-    if (currentVisibleCertIds.length === 0) return;
-    currentModalIndex = (currentModalIndex + 1) % currentVisibleCertIds.length;
-    renderModalContent(currentVisibleCertIds[currentModalIndex]);
+    const allFilteredIds = currentFilteredCards.map(c => c.getAttribute('data-id')).filter(Boolean);
+    if (allFilteredIds.length === 0) return;
+    currentModalIndex = (currentModalIndex + 1) % allFilteredIds.length;
+    renderModalContent(allFilteredIds[currentModalIndex]);
 }
 
 function prevCertModal() {
-    if (currentVisibleCertIds.length === 0) return;
-    currentModalIndex = (currentModalIndex - 1 + currentVisibleCertIds.length) % currentVisibleCertIds.length;
-    renderModalContent(currentVisibleCertIds[currentModalIndex]);
+    const allFilteredIds = currentFilteredCards.map(c => c.getAttribute('data-id')).filter(Boolean);
+    if (allFilteredIds.length === 0) return;
+    currentModalIndex = (currentModalIndex - 1 + allFilteredIds.length) % allFilteredIds.length;
+    renderModalContent(allFilteredIds[currentModalIndex]);
 }
 
 // Keyboard Listeners for Modal
@@ -542,24 +648,28 @@ window.addEventListener('keydown', (e) => {
 });
 
 // Update interactive cursor hover elements
-const certInteractives = document.querySelectorAll('.cert-filter-btn, .cert-btn-view, .cert-btn-link, .cert-card-media, .cert-modal-nav, .cert-modal-close');
-if (cursorDot) {
+function attachCursorEvents() {
+    if (!cursorDot) return;
+    const certInteractives = document.querySelectorAll(
+        '.cert-filter-btn, .cert-btn-view, .cert-btn-link, .cert-card-media, .cert-modal-nav, .cert-modal-close, .cert-view-btn, .page-btn'
+    );
     certInteractives.forEach(el => {
-        el.addEventListener('mouseenter', () => {
+        el.onmouseenter = () => {
             cursorDot.style.transform = 'translate(-50%, -50%) scale(2.2)';
             cursorDot.style.backgroundColor = '#fff';
             cursorDot.style.boxShadow = '0 0 15px #fff, 0 0 30px var(--accent-primary)';
-        });
-        el.addEventListener('mouseleave', () => {
+        };
+        el.onmouseleave = () => {
             cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
             cursorDot.style.backgroundColor = 'var(--accent-primary)';
             cursorDot.style.boxShadow = '0 0 10px var(--accent-primary)';
-        });
+        };
     });
 }
 
-// Initialize on page load
+// Initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-    updateVisibleCertList();
+    filterCertificates(true);
+    attachCursorEvents();
 });
 

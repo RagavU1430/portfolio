@@ -320,37 +320,37 @@
         </div>
     </section>
 
-            <section id="certifications" class="section bg-alt">
+                <section id="certifications" class="section bg-alt">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Credentials & Honors</span>
-                <h2 class="section-title">Certifications & Honors</h2>
+                <span class="section-subtitle">Credentials & Recognitions</span>
+                <h2 class="section-title">Certifications</h2>
                 <p class="section-desc-sub">
-                    A curated collection of <strong>36 verified industry credentials</strong> spanning Artificial Intelligence, Cloud Computing, Software Engineering, IoT, and Cyber Defense.
+                    A curated catalog of <strong>36 verified credentials</strong> across AI & Machine Learning, Cloud Architecture, Software Engineering, IoT, and Cyber Defense.
                 </p>
             </div>
 
-            <!-- Highlights Metric Counters -->
+            <!-- Metrics Highlight Strip -->
             <div class="cert-metrics-strip">
                 <div class="cert-metric-item">
-                    <div class="cert-metric-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="cert-metric-icon"><i class="fas fa-award"></i></div>
                     <div class="cert-metric-info">
                         <span class="cert-metric-value">36</span>
-                        <span class="cert-metric-label">Verified Credentials</span>
+                        <span class="cert-metric-label">Verified Certs</span>
                     </div>
                 </div>
                 <div class="cert-metric-item">
                     <div class="cert-metric-icon"><i class="fas fa-brain"></i></div>
                     <div class="cert-metric-info">
                         <span class="cert-metric-value">13</span>
-                        <span class="cert-metric-label">AI & GenAI Certs</span>
+                        <span class="cert-metric-label">AI & GenAI</span>
                     </div>
                 </div>
                 <div class="cert-metric-item">
-                    <div class="cert-metric-icon"><i class="fas fa-building"></i></div>
+                    <div class="cert-metric-icon"><i class="fas fa-cubes"></i></div>
                     <div class="cert-metric-info">
                         <span class="cert-metric-value">10+</span>
-                        <span class="cert-metric-label">Top Global Issuers</span>
+                        <span class="cert-metric-label">Global Issuers</span>
                     </div>
                 </div>
                 <div class="cert-metric-item">
@@ -362,57 +362,60 @@
                 </div>
             </div>
 
-            <!-- Interactive Filter and Search Controls -->
-            <div class="cert-controls">
-                <!-- Search Bar -->
+            <!-- Toolbar: Search Bar + View Toggle -->
+            <div class="cert-toolbar">
                 <div class="cert-search-box">
                     <i class="fas fa-search cert-search-icon"></i>
-                    <input type="text" id="certSearchInput" placeholder="Search by title, skill (e.g. Claude, Python, AWS, Docker)..." autocomplete="off">
+                    <input type="text" id="certSearchInput" placeholder="Search certifications (e.g. AWS, Claude, Python, Google)..." autocomplete="off">
                     <button id="certSearchClear" class="cert-search-clear" title="Clear Search"><i class="fas fa-times"></i></button>
                 </div>
-
-                <!-- Filter Tabs -->
-                <div class="cert-filters" id="certFilterTabs">
-                    <button class="cert-filter-btn active" data-filter="all">
-                        <i class="fas fa-border-all"></i> All <span class="filter-count">36</span>
+                <div class="cert-view-toggle">
+                    <button class="cert-view-btn active" id="viewGridBtn" title="Grid View">
+                        <i class="fas fa-th-large"></i> <span>Grid</span>
                     </button>
-                    <button class="cert-filter-btn" data-filter="ai">
-                        <i class="fas fa-robot"></i> AI & GenAI <span class="filter-count">13</span>
+                    <button class="cert-view-btn" id="viewListBtn" title="Compact List View">
+                        <i class="fas fa-list"></i> <span>List</span>
                     </button>
-                    <button class="cert-filter-btn" data-filter="cloud">
-                        <i class="fas fa-cloud"></i> Cloud & DevOps <span class="filter-count">3</span>
-                    </button>
-                    <button class="cert-filter-btn" data-filter="dev">
-                        <i class="fas fa-code"></i> Programming & DB <span class="filter-count">8</span>
-                    </button>
-                    <button class="cert-filter-btn" data-filter="iot">
-                        <i class="fas fa-network-wired"></i> IoT & Embedded <span class="filter-count">2</span>
-                    </button>
-                    <button class="cert-filter-btn" data-filter="cyber">
-                        <i class="fas fa-shield-alt"></i> Cybersecurity <span class="filter-count">3</span>
-                    </button>
-                    <button class="cert-filter-btn" data-filter="internship">
-                        <i class="fas fa-briefcase"></i> Internships <span class="filter-count">3</span>
-                    </button>
-                    <button class="cert-filter-btn" data-filter="hackathon">
-                        <i class="fas fa-trophy"></i> Hackathons <span class="filter-count">4</span>
-                    </button>
-                </div>
-
-                <!-- Active Filter & Results Info -->
-                <div class="cert-status-bar">
-                    <span id="certResultsCount">Showing 36 credentials</span>
                 </div>
             </div>
 
-            <!-- Certificate Cards Grid -->
-            <div class="cert-grid" id="certGrid">
+            <!-- Filter Category Tabs -->
+            <div class="cert-filters" id="certFilterTabs">
+                <button class="cert-filter-btn active" data-filter="all">
+                    All <span class="filter-count">36</span>
+                </button>
+                <button class="cert-filter-btn" data-filter="ai">
+                    <i class="fas fa-robot"></i> AI & GenAI <span class="filter-count">13</span>
+                </button>
+                <button class="cert-filter-btn" data-filter="cloud">
+                    <i class="fas fa-cloud"></i> Cloud & DevOps <span class="filter-count">3</span>
+                </button>
+                <button class="cert-filter-btn" data-filter="dev">
+                    <i class="fas fa-code"></i> Programming & DB <span class="filter-count">8</span>
+                </button>
+                <button class="cert-filter-btn" data-filter="iot">
+                    <i class="fas fa-network-wired"></i> IoT & Embedded <span class="filter-count">2</span>
+                </button>
+                <button class="cert-filter-btn" data-filter="cyber">
+                    <i class="fas fa-shield-alt"></i> Cybersecurity <span class="filter-count">3</span>
+                </button>
+                <button class="cert-filter-btn" data-filter="internship">
+                    <i class="fas fa-briefcase"></i> Internships <span class="filter-count">3</span>
+                </button>
+                <button class="cert-filter-btn" data-filter="hackathon">
+                    <i class="fas fa-trophy"></i> Hackathons <span class="filter-count">4</span>
+                </button>
+            </div>
+
+            <!-- Paginated Certificates Grid Container -->
+            <div class="cert-grid-wrapper">
+                <div class="cert-grid" id="certGrid">
                 <!-- Cert: Google AI Essentials Specialization -->
                 <div class="cert-card" data-category="ai" data-id="google-ai-essentials" data-search="google ai essentials specialization google / coursera 5-course comprehensive professional specialization by google mastering generative ai tools, prompt engineering, and workplace productivity. generative ai prompt engineering productivity google ai">
                     <div class="cert-card-media" onclick="openCertModal('google-ai-essentials')">
                         <img src="certificates/Coursera/Coursera - Google AI Essentials (Full).jpg" alt="Google AI Essentials Specialization" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Specialization</span>
                     </div>
@@ -441,7 +444,7 @@
                     <div class="cert-card-media" onclick="openCertModal('google-prompting-spec')">
                         <img src="certificates/Coursera/Coursera - Google Prompting ( Full ).jpg" alt="Google Prompting Specialization" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Specialization</span>
                     </div>
@@ -470,7 +473,7 @@
                     <div class="cert-card-media" onclick="openCertModal('gemini-multi-agent')">
                         <img src="certificates/Custom/Orchestrate Multi Agent Workflows with Gemini Enterprise.png" alt="Multi-Agent Workflows with Gemini Enterprise" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Advanced AI</span>
                     </div>
@@ -499,7 +502,7 @@
                     <div class="cert-card-media" onclick="openCertModal('aws-prompt-basics')">
                         <img src="certificates/AWS/aws prompt basics_thumb.jpg" alt="Foundations of Prompt Engineering" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">AWS Certified</span>
                     </div>
@@ -528,7 +531,7 @@
                     <div class="cert-card-media" onclick="openCertModal('aws-llm-building')">
                         <img src="certificates/AWS/Building language models on aws_page-0001.jpg" alt="Building Language Models on AWS" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">AWS Certified</span>
                     </div>
@@ -557,7 +560,7 @@
                     <div class="cert-card-media" onclick="openCertModal('anthropic-claude-with-ai')">
                         <img src="certificates/Anthropic/Claude with anthropic AI_page-0001.jpg" alt="Claude with Anthropic AI" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Official Skilljar</span>
                     </div>
@@ -586,7 +589,7 @@
                     <div class="cert-card-media" onclick="openCertModal('anthropic-claude-101')">
                         <img src="certificates/Anthropic/Claude 101_page-0001.jpg" alt="Claude 101 Certification" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Official Anthropic</span>
                     </div>
@@ -615,7 +618,7 @@
                     <div class="cert-card-media" onclick="openCertModal('anthropic-cowork')">
                         <img src="certificates/Anthropic/Certificate to introduction to claude cowork_thumb.jpg" alt="Introduction to Claude Cowork" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Official Anthropic</span>
                     </div>
@@ -644,7 +647,7 @@
                     <div class="cert-card-media" onclick="openCertModal('tcs-yuva-ai')">
                         <img src="certificates/Custom/Tcs Ion Yuva AI Certificatea_thumb.jpg" alt="YUVA AI For All Certification" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Government / TCS</span>
                     </div>
@@ -673,7 +676,7 @@
                     <div class="cert-card-media" onclick="openCertModal('ms-unlocking-ai')">
                         <img src="certificates/Custom/certificate_658a7e4d-dadd-4922-8f22-9593b904f690_thumb.jpg" alt="Unlocking AI for Everyone" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">NCVET Recognized</span>
                     </div>
@@ -702,7 +705,7 @@
                     <div class="cert-card-media" onclick="openCertModal('ec-council-ai')">
                         <img src="certificates/Custom/EC COUNCIL - AI ESSENTIALS.png" alt="AI Essentials Certification" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">EC-Council Certified</span>
                     </div>
@@ -731,7 +734,7 @@
                     <div class="cert-card-media" onclick="openCertModal('vibe-coding-ai-agents')">
                         <img src="certificates/Custom/5-Day AI Agents_ Intensive Vibe Coding Course.png" alt="5-Day AI Agents Intensive Course" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Agentic Coding</span>
                     </div>
@@ -760,7 +763,7 @@
                     <div class="cert-card-media" onclick="openCertModal('ai-for-all-soar')">
                         <img src="certificates/Custom/AI for ALL - SOAR.jpg" alt="AI for ALL - SOAR Certification" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Specialized</span>
                     </div>
@@ -789,7 +792,7 @@
                     <div class="cert-card-media" onclick="openCertModal('google-cloud-student')">
                         <img src="certificates/Custom/Google Certified Student.png" alt="Google Certified Student Developer" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Google Certified</span>
                     </div>
@@ -818,7 +821,7 @@
                     <div class="cert-card-media" onclick="openCertModal('google-cloud-tech-series')">
                         <img src="certificates/Custom/Google_Cloud Technical Series_thumb.jpg" alt="Google Cloud Technical Series" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Technical Credential</span>
                     </div>
@@ -847,7 +850,7 @@
                     <div class="cert-card-media" onclick="openCertModal('salesforce-admin')">
                         <img src="certificates/Nasscom/Salesforce Administrator Explorer_thumb.jpg" alt="Salesforce Administrator Explorer" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">NASSCOM Aligned</span>
                     </div>
@@ -876,7 +879,7 @@
                     <div class="cert-card-media" onclick="openCertModal('hackerrank-java')">
                         <img src="certificates/Hacker Rank/Java Hackerrank.png" alt="Java (Basic) Skill Certification" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">HackerRank Certified</span>
                     </div>
@@ -905,7 +908,7 @@
                     <div class="cert-card-media" onclick="openCertModal('hackerrank-python')">
                         <img src="certificates/Hacker Rank/python(basic) hackkerrank.png" alt="Python (Basic) Skill Certification" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">HackerRank Certified</span>
                     </div>
@@ -934,7 +937,7 @@
                     <div class="cert-card-media" onclick="openCertModal('mongodb-crud')">
                         <img src="certificates/Custom/CRUD Operations in Mongo DB - Mongo DB_thumb.jpg" alt="CRUD Operations in MongoDB" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Credly Verified</span>
                     </div>
@@ -963,7 +966,7 @@
                     <div class="cert-card-media" onclick="openCertModal('infosys-python-foundation')">
                         <img src="certificates/Infosys Springboard/Python Foundation Certification_thumb.jpg" alt="Python Foundation Certification" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Infosys Certified</span>
                     </div>
@@ -992,7 +995,7 @@
                     <div class="cert-card-media" onclick="openCertModal('infosys-java-fundamentals')">
                         <img src="certificates/Infosys Springboard/Java Programming Fundamentals_thumb.jpg" alt="Java Programming Fundamentals" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Infosys Certified</span>
                     </div>
@@ -1021,7 +1024,7 @@
                     <div class="cert-card-media" onclick="openCertModal('infosys-nosql')">
                         <img src="certificates/Infosys Springboard/Intro to NO-SQL_thumb.jpg" alt="Introduction to NoSQL Databases" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Infosys Certified</span>
                     </div>
@@ -1050,7 +1053,7 @@
                     <div class="cert-card-media" onclick="openCertModal('ibm-design-thinking')">
                         <img src="certificates/Custom/IBMDesign20260103-32-tfz308_page-0001.jpg" alt="Enterprise Design Thinking" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">IBM Certified</span>
                     </div>
@@ -1079,7 +1082,7 @@
                     <div class="cert-card-media" onclick="openCertModal('forage-swe-simulation')">
                         <img src="certificates/Forage/bWqaecPDbYAwSDqJy_Sj7temL583QAYpHXD_EueeWBNid6CNHgRbr_1771675646347_completion_certificate_page-0001.jpg" alt="Software Engineering Job Simulation" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Job Simulation</span>
                     </div>
@@ -1108,7 +1111,7 @@
                     <div class="cert-card-media" onclick="openCertModal('nasscom-iot-gold')">
                         <img src="certificates/Nasscom/Nasscom__IOT_Ragav_thumb.jpg" alt="Introduction to IoT & Digital Transformation" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Gold Category</span>
                     </div>
@@ -1137,7 +1140,7 @@
                     <div class="cert-card-media" onclick="openCertModal('cisco-iot-update')">
                         <img src="certificates/Custom/IntrotoIoTUpdate20251125-30-3lkm3t_page-0001.jpg" alt="Introduction to IoT Architecture" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Cisco Certified</span>
                     </div>
@@ -1166,7 +1169,7 @@
                     <div class="cert-card-media" onclick="openCertModal('mastercard-cybersecurity')">
                         <img src="certificates/Forage/Cybersecurity Job Simulation_thumb.jpg" alt="Mastercard Cybersecurity Job Simulation" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Mastercard / Forage</span>
                     </div>
@@ -1195,7 +1198,7 @@
                     <div class="cert-card-media" onclick="openCertModal('tata-cybersecurity-iam')">
                         <img src="certificates/Forage/gmf3ypEXBj2wvfQWC_ifobHAoMjQs9s6bKS_EueeWBNid6CNHgRbr_1768725948707_completion_certificate_thumb.jpg" alt="Cybersecurity Analyst (IAM Simulation)" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Tata / Forage</span>
                     </div>
@@ -1224,7 +1227,7 @@
                     <div class="cert-card-media" onclick="openCertModal('cr1061-tech-skills')">
                         <img src="certificates/Custom/Ragav_CR1061_certificate_page-0001.jpg" alt="Cybersecurity & Tech Skills (CR1061)" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Competency</span>
                     </div>
@@ -1253,7 +1256,7 @@
                     <div class="cert-card-media" onclick="openCertModal('enginow-ai-intern-cert')">
                         <img src="certificates/Internship/Internship Complete Certificate.png" alt="AI Internship Completion Certificate" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">4-Week AI Program</span>
                     </div>
@@ -1282,7 +1285,7 @@
                     <div class="cert-card-media" onclick="openCertModal('pega-systems-internship')">
                         <img src="certificates/Internship/PEGA INTERN.jpg" alt="Pega Systems Enterprise Internship" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Enterprise Pega</span>
                     </div>
@@ -1311,7 +1314,7 @@
                     <div class="cert-card-media" onclick="openCertModal('blue-silicon-internship')">
                         <img src="certificates/Internship/Blue Silicon.jpeg" alt="Blue Silicon Infotech Internship" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Technical Internship</span>
                     </div>
@@ -1340,7 +1343,7 @@
                     <div class="cert-card-media" onclick="openCertModal('summer-of-code-2026')">
                         <img src="certificates/Custom/Summer Of Code 2026.jpg" alt="EduLinkUp Summer of Code (ELUSOC 2026)" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Open Source</span>
                     </div>
@@ -1369,7 +1372,7 @@
                     <div class="cert-card-media" onclick="openCertModal('vbyld-2027')">
                         <img src="certificates/Custom/Viksit Bharat Young Leaders Dialogue (VBYLD) 2027_Certificate_Ragav U.png" alt="Viksit Bharat Young Leaders Dialogue 2027" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">National Honor</span>
                     </div>
@@ -1398,7 +1401,7 @@
                     <div class="cert-card-media" onclick="openCertModal('neurobots-hackathon')">
                         <img src="certificates/Hackathons/NeuroBots_Participation.png" alt="NeuroBots Robotics & AI Hackathon" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Hackathon Finalist</span>
                     </div>
@@ -1427,7 +1430,7 @@
                     <div class="cert-card-media" onclick="openCertModal('unstop-competition')">
                         <img src="certificates/Unstop/ebac0b7c-d950-4b09-8cea-afca76d45779.jpg" alt="National Skill Assessment & Challenge" loading="lazy" class="cert-thumb-img">
                         <div class="cert-media-overlay">
-                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Quick View</span>
+                            <span class="cert-zoom-btn"><i class="fas fa-expand-alt"></i> Preview</span>
                         </div>
                         <span class="cert-card-badge">Competition</span>
                     </div>
@@ -1451,13 +1454,24 @@
                         </div>
                     </div>
                 </div>
+                </div>
+
+                <div id="certEmptyState" class="cert-empty-state" style="display: none;">
+                    <i class="fas fa-search-minus"></i>
+                    <h3>No matching credentials found</h3>
+                    <p>Try searching for a different keyword or reset the category filter.</p>
+                    <button class="btn-primary" onclick="resetCertFilters()">Reset Filters</button>
+                </div>
             </div>
 
-            <div id="certEmptyState" class="cert-empty-state" style="display: none;">
-                <i class="fas fa-search-minus"></i>
-                <h3>No matching credentials found</h3>
-                <p>Try searching for a different keyword or reset the category filter.</p>
-                <button class="btn-primary" onclick="resetCertFilters()">Reset Filters</button>
+            <!-- Pagination Bar -->
+            <div class="cert-pagination-container" id="certPaginationContainer">
+                <div class="cert-page-info" id="certPageInfo">
+                    Showing 1 – 6 of 36 credentials
+                </div>
+                <div class="cert-pagination" id="certPagination">
+                    <!-- Dynamic Page Buttons Injected by JS -->
+                </div>
             </div>
         </div>
     </section>
@@ -1503,6 +1517,9 @@
             </div>
         </div>
     </div>
+
+    </div>
+
 
     <section id="contact" class="section footer-section">
         <div class="container">
