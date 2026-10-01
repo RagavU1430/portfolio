@@ -651,7 +651,7 @@ window.addEventListener('keydown', (e) => {
 function attachCursorEvents() {
     if (!cursorDot) return;
     const certInteractives = document.querySelectorAll(
-        '.cert-filter-btn, .cert-btn-view, .cert-btn-link, .cert-card-media, .cert-modal-nav, .cert-modal-close, .cert-view-btn, .page-btn'
+        '.cert-filter-btn, .cert-btn-view, .cert-btn-link, .cert-card-media, .cert-modal-nav, .cert-modal-close, .cert-view-btn, .page-btn, .contact-item, .btn-submit-whatsapp, .footer-socials a'
     );
     certInteractives.forEach(el => {
         el.onmouseenter = () => {
@@ -664,6 +664,24 @@ function attachCursorEvents() {
             cursorDot.style.backgroundColor = 'var(--accent-primary)';
             cursorDot.style.boxShadow = '0 0 10px var(--accent-primary)';
         };
+    });
+}
+
+// WhatsApp Quick Contact Form
+const whatsappForm = document.getElementById('whatsappForm');
+if (whatsappForm) {
+    whatsappForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = (document.getElementById('name')?.value || '').trim();
+        const email = (document.getElementById('email')?.value || '').trim();
+        const message = (document.getElementById('message')?.value || '').trim();
+
+        let text = `Hello Ragav, my name is ${name}.%0A`;
+        if (email) text += `Email: ${email}%0A`;
+        text += `Message: ${encodeURIComponent(message)}`;
+
+        const phone = '919360376757';
+        window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
     });
 }
 

@@ -1523,73 +1523,96 @@
 
     <section id="contact" class="section footer-section">
         <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 class="section-title">Let's Collaborate</h2>
+                <p class="section-desc-sub">
+                    Whether you have an opportunity, a technical project, or need creative cinematography & editing expertise, my inbox is always open.
+                </p>
+            </div>
+
             <div class="contact-wrapper">
+                <!-- Left: Contact Details & Availability -->
                 <div class="contact-info">
-                    <h2>Let's Connect</h2>
-                    <p>Whether you need a developer for a technical project or a creative eye for visual content, I'm
-                        ready to collaborate.</p>
+                    <div class="contact-status-card">
+                        <span class="status-beacon"></span>
+                        <div class="status-info">
+                            <h4>Open to Opportunities</h4>
+                            <p>Available for Full-time Roles, Internships & Freelance Projects</p>
+                        </div>
+                    </div>
+
                     <div class="contact-details">
+                        <a href="mailto:ragavkrr14@gmail.com" class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-val">ragavkrr14@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <a href="tel:+919360376757" class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">Phone</span>
+                                <span class="contact-val">+91 93603 76757</span>
+                            </div>
+                        </a>
+
                         <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>ragavkrr14@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+91 9360376757</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Karur, Tamil Nadu, India</span>
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">Location</span>
+                                <span class="contact-val">Karur, Tamil Nadu, India</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="whatsappForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="Your Email (Optional)">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
-                </form>
 
-                <script>
-                    document.getElementById('whatsappForm').addEventListener('submit', function (e) {
-                        e.preventDefault();
-
-                        var name = document.getElementById('name').value;
-                        var email = document.getElementById('email').value;
-                        var message = document.getElementById('message').value;
-
-                        var whatsappMessage = "Name: " + name + "%0a";
-                        if (email) whatsappMessage += "Email: " + email + "%0a";
-                        whatsappMessage += "Message: " + message;
-
-                        var phoneNumber = "919360376757"; // Your phone number with country code
-
-                        var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + whatsappMessage;
-
-                        window.open(whatsappUrl, '_blank');
-                    });
-                </script>
+                <!-- Right: Interactive WhatsApp Direct Message Form -->
+                <div class="contact-form-card">
+                    <form class="contact-form" id="whatsappForm">
+                        <div class="form-header">
+                            <h3><i class="fab fa-whatsapp"></i> Quick Message</h3>
+                            <p>Direct message to WhatsApp for instant connection</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="e.g. John Doe" required autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="optional-text">(Optional)</span></label>
+                            <input type="email" id="email" placeholder="e.g. john@example.com" autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="4" placeholder="Tell me about your project, idea, or opportunity..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary btn-submit-whatsapp">
+                            <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                        </button>
+                    </form>
+                </div>
             </div>
+
+            <!-- Footer Bar -->
+            <footer class="main-footer">
+                <div class="footer-copy">
+                    <p>&copy; 2026 <strong>Ragav U</strong>. All rights reserved.</p>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/ragav-u-639b1a335" target="_blank" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/RagavU1430" target="_blank" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/itz__me__ragav12?igsh=MnU5czE4bXFpeTA3" target="_blank" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </footer>
         </div>
-        <footer class="main-footer">
-            <p>&copy; 2026 Ragav U. All rights reserved.</p>
-            <div class="footer-socials">
-                <a href="https://www.linkedin.com/in/ragav-u-639b1a335" target="_blank"><i
-                        class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/RagavU1430" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/itz__me__ragav12?igsh=MnU5czE4bXFpeTA3" target="_blank"><i
-                        class="fab fa-instagram"></i></a>
-            </div>
-        </footer>
     </section>
 
     <script src="certificates-data.js"></script>
