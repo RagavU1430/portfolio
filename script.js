@@ -53,12 +53,12 @@ window.addEventListener('mousemove', (e) => {
             particles.push({
                 x: lastMouse.x + dx * (i / numParticles) + spread,
                 y: lastMouse.y + dy * (i / numParticles) + spread,
-                vx: -dx * 0.02 + (Math.random() - 0.5) * 0.5, // smoother spread tail
-                vy: -dy * 0.02 + (Math.random() - 0.5) * 0.5, // remove gravity for a pure tail
-                life: 1, // 0 to 1
-                size: Math.random() * 2.5 + 1.5,
-                decay: Math.random() * 0.03 + 0.02, // slightly faster fade to handle more particles
-                hue: 180 + Math.random() * 40 // cyan to blue colors
+                vx: -dx * 0.02 + (Math.random() - 0.5) * 0.5,
+                vy: -dy * 0.02 + (Math.random() - 0.5) * 0.5,
+                life: 1,
+                size: Math.random() * 2.2 + 1.2,
+                decay: Math.random() * 0.035 + 0.02,
+                hue: 195 + Math.random() * 35 // Electric azure to indigo
             });
         }
     }
@@ -212,55 +212,74 @@ if (statsSection) {
     });
 }
 
-// Matrix Background Effect
+// Executive Ambient Constellation Background
 const canvas = document.getElementById('matrix-bg');
 if (canvas) {
     const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const nodeCount = Math.floor(Math.min(width, 1400) / 18);
+    const nodes = [];
 
-    const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-    const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const nums = '0123456789';
-    const alphabet = katakana + latin + nums;
-
-    const fontSize = 16;
-    let columns = canvas.width / fontSize;
-
-    const rainDrops = [];
-
-    for (let x = 0; x < columns; x++) {
-        rainDrops[x] = 1;
+    for (let i = 0; i < nodeCount; i++) {
+        nodes.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            radius: Math.random() * 1.8 + 1,
+            color: Math.random() > 0.4 ? 'rgba(56, 189, 248, ' : 'rgba(99, 102, 241, '
+        });
     }
 
-    const draw = () => {
-        // Fade out previous frame to create trail effect
-        // Using theme background color with very high opacity for fade
-        ctx.fillStyle = 'rgba(11, 15, 25, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    function animateNodes() {
+        ctx.clearRect(0, 0, width, height);
 
-        ctx.fillStyle = '#00f0ff'; // Cyber Cyan to match theme
-        ctx.font = fontSize + 'px monospace';
+        // Update and draw nodes
+        for (let i = 0; i < nodes.length; i++) {
+            const n = nodes[i];
+            n.x += n.vx;
+            n.y += n.vy;
 
-        for (let i = 0; i < rainDrops.length; i++) {
-            const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-            ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+            if (n.x < 0) n.x = width;
+            if (n.x > width) n.x = 0;
+            if (n.y < 0) n.y = height;
+            if (n.y > height) n.y = 0;
 
-            if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                rainDrops[i] = 0;
+            // Connect nearby nodes
+            for (let j = i + 1; j < nodes.length; j++) {
+                const n2 = nodes[j];
+                const dx = n.x - n2.x;
+                const dy = n.y - n2.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 125) {
+                    const alpha = (1 - dist / 125) * 0.22;
+                    ctx.beginPath();
+                    ctx.moveTo(n.x, n.y);
+                    ctx.lineTo(n2.x, n2.y);
+                    ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.stroke();
+                }
             }
-            rainDrops[i]++;
-        }
-    };
 
-    setInterval(draw, 30);
+            // Draw Node Particle
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+            ctx.fillStyle = n.color + '0.75)';
+            ctx.fill();
+        }
+
+        requestAnimationFrame(animateNodes);
+    }
+
+    animateNodes();
 
     window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        columns = canvas.width / fontSize;
-        // Optionally reset drops or just let them fall
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
     });
 }
 
